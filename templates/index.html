@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Soil Health Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-900 font-sans p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">🌱 Soil Health & Biodiversity Dashboard</h1>
+
+<!-- Crop Recommendation Form -->
+<form action="/get_crop_recommendation" method="POST" class="bg-white p-4 rounded-lg shadow mb-6">
+    <h2 class="text-xl font-semibold mb-2">🌾 Crop Recommendation</h2>
+    <input type="text" name="location" placeholder="Enter Location" class="border p-2 mb-2 w-full" required />
+    <input type="number" name="ph" placeholder="Enter Soil pH" step="0.01" class="border p-2 mb-2 w-full" required />
+    <input type="text" name="current_crop" placeholder="Current Crop (Optional)" class="border p-2 mb-2 w-full" />
+    <input type="text" name="stage" placeholder="Growth Stage (Optional)" class="border p-2 mb-2 w-full" />
+    <input type="number" step="0.01" name="kc" placeholder="Crop Coefficient (Kc) (Optional)" class="border p-2 mb-2 w-full" />
+    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Get Recommendation</button>
+  </form>
+  
+    <!-- Crop Recommendation Result -->
+    {% if result %}
+    <div class="bg-white p-4 rounded shadow mb-6">
+      <h2 class="text-xl font-bold mb-2">🌾 Recommended Crop: {{ result.crop }}</h2>
+
+      <p><strong>🌿 Microbial Biodiversity:</strong> {{ result.microbial_health }}</p>
+
+      <div class="mt-2">
+        <h3 class="text-lg font-semibold">🧪 Estimated Current Nutrient Levels (kg/ha):</h3>
+        <ul class="ml-4 list-disc">
+          <li><strong>Nitrogen (N):</strong> {{ result.nutrients.N }}</li>
+          <li><strong>Phosphorus (P):</strong> {{ result.nutrients.P }}</li>
+          <li><strong>Potassium (K):</strong> {{ result.nutrients.K }}</li>
+          <li><strong>Sulfur (S):</strong> {{ result.nutrients.S }}</li>
+        </ul>
+        <p class="text-sm text-gray-500 italic mt-1">These values are estimated based on your soil pH and local conditions.</p>
+      </div>
+
+      {% if result.weather %}
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🌦 Weather Data:</h3>
+        <p>Temperature: {{ result.weather.temperature }} °C</p>
+        <p>Humidity: {{ result.weather.humidity }} %</p>
+        <p>Rainfall: {{ result.weather.precip }} mm</p>
+        <p>Condition: {{ result.weather.condition }}</p>
+      </div>
+      {% endif %}
+
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🧠 Why this crop?</h3>
+        <p>{{ result.explanation }}</p>
+      </div>
+
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🔁 Suggested Next Crop:</h3>
+        <p class="mb-1">{{ result.next_crop }}</p>
+        <p class="text-sm text-gray-500 italic">Selected based on nutrient rotation logic, soil pH, weather, and location to ensure long-term soil sustainability.</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Problem Finder Form -->
+    <form action="/problem-finder" method="POST" class="bg-white p-4 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-2">🔍 Problem Finder</h2>
+      <input type="text" name="current_crop" placeholder="Current Crop" class="border p-2 mb-2 w-full" required />
+      <input type="text" name="location" placeholder="Location" class="border p-2 mb-2 w-full" required />
+      <input type="number" name="ph" placeholder="Soil pH" step="0.01" class="border p-2 mb-2 w-full" required />
+      <input type="number" name="nitrogen" placeholder="Nitrogen Content (kg/ha)" class="border p-2 mb-2 w-full" step="0.01" required>
+      <input type="number" name="phosphorus" placeholder="Phosphorus Content (kg/ha)" class="border p-2 mb-2 w-full" step="0.01" required>
+      <input type="number" name="potassium" placeholder="Potassium Content (kg/ha)" class="border p-2 mb-2 w-full" step="0.01" required>
+      <input type="number" name="sulfur" placeholder="Sulfur Content (kg/ha)" class="border p-2 mb-2 w-full" step="0.01" required>
+      <input type="text" name="fertilizer" placeholder="Current Fertilizer" class="border p-2 mb-2 w-full" required />
+      <button type="submit" class="bg-yellow-600 text-white px-4 py-2 rounded">Find Problems</button>
+    </form>
+
+    <!-- Problem Finder Output -->
+    {% if fertilizer_result %}
+    <div class="bg-white p-4 mt-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-2">🩺 Diagnosis Result</h2>
+
+      {% if fertilizer_result.diagnosis.issues %}
+      <ul class="list-disc pl-6 text-gray-800">
+        {% for issue in fertilizer_result.diagnosis.issues %}
+        <li class="mb-3">
+          <strong>🥼 Nutrient:</strong> {{ issue.nutrient }}<br>
+          <strong>🧪 Expected:</strong> {{ issue.expected }} | <strong>Actual:</strong> {{ issue.actual }}<br>
+          <strong>⚠️ Problem:</strong> {{ issue.problem }}<br>
+          <strong>🧭 Cause:</strong> {{ issue.cause }}<br>
+          <strong>💡 Solution:</strong> {{ issue.solution }}<br>
+          <strong>🌱 Suggested Fertilizer:</strong> {{ issue.better_fertilizer }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-green-600 font-medium">✅ Analysis Completed!</p>
+      {% endif %}
+
+      {% if fertilizer_result.web_result %}
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🧫 Recommended Fertilizer</h3>
+        <p><strong>🔄 From:</strong> {{ fertilizer_result.web_result.current_fertilizer or "Urea" }}</p>
+        <p><strong>➡️ To:</strong> {{ fertilizer_result.web_result.recommended_fertilizer or "Not specified" }}</p>
+      </div>
+      
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🌿 Suggested Next Crop</h3>
+        <p>{{ fertilizer_result.web_result.next_crop or "Not available" }}</p>
+      </div>
+      
+      {% if fertilizer_result.web_result.best_fertilizer %}
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🥇 Best Fertilizer from Database</h3>
+        <ul class="ml-4 list-disc">
+        <li><strong>Name:</strong> {{ fertilizer_result.web_result.best_fertilizer.name or "N/A" }}</li>
+        <li><strong>N (%):</strong> {{ fertilizer_result.web_result.best_fertilizer.N or "N/A" }}</li>
+        <li><strong>P<sub>2</sub>O<sub>5</sub> (%):</strong> {{ fertilizer_result.web_result.best_fertilizer.P or "N/A" }}</li>
+        <li><strong>K<sub>2</sub>O (%):</strong> {{ fertilizer_result.web_result.best_fertilizer.K or "N/A" }}</li>
+        <li><strong>Category:</strong> {{ fertilizer_result.web_result.best_fertilizer.category or "N/A" }}</li>
+        <li><strong>Use:</strong> {{ fertilizer_result.web_result.best_fertilizer.use or "N/A" }}</li>
+        </ul>
+      </div>
+      {% endif %}
+      {% endif %}
+      
+
+      {% if fertilizer_result.dosage_recommendation %}
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">🧬 Smart Fertilizer Recommendation</h3>
+        <ul class="ml-4 list-disc">
+          {% for key, value in fertilizer_result.dosage_recommendation.items() %}
+          <li><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if fertilizer_result.adjusted_dosage %}
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold">⚖️ Adjusted Fertilizer Dosage</h3>
+        <ul class="ml-4 list-disc">
+          {% for key, value in fertilizer_result.adjusted_dosage.items() %}
+          <li><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    
+    {% endif %}
+    
+    <!-- Water Requirement Form -->
+<form method="POST" action="/water-requirement" class="my-6 p-4 bg-green-100 rounded-xl">
+    <h2 class="text-lg font-semibold mb-2">Estimate Water Requirement</h2>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <input type="text" name="location" placeholder="Enter location (e.g., Pune)" class="p-2 rounded border border-gray-300 w-full sm:w-1/2" required>
+      <input type="text" name="crop" placeholder="Enter crop (e.g., Wheat)" class="p-2 rounded border border-gray-300 w-full sm:w-1/2" required>
+      <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Analyze</button>
+    </div>
+  </form>
+  
+  <!-- Show Water Requirement Graph -->
+  {% if water_plot %}
+  <div class="my-4">
+    <h3 class="text-md font-semibold mb-2">
+      Water Requirement Plot for {{ crop }} ({{ stage }} stage, Kc={{ kc }}) in {{ location }}
+    </h3>
+    <img src="{{ url_for('static', filename=water_plot) }}" alt="Water Requirement Plot" class="w-full rounded shadow">
+  </div>
+  {% endif %}
+  
+</div>
+</body>
+</html>
+
+
