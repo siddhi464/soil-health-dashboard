@@ -1,0 +1,50 @@
+Parameter,"Min_Threshold 	",Max_Threshold,Deficiency Problem,Excess Problem,"Deficiency Solution	",Excess Solution
+Nitrogen ,"20 ppm 	",50 ppm,"Yellowing of older leaves, stunted growth	","Excess foliage, delayed flowering	","Urea, compost, green manure	","Split application, grow N-loving crops"
+Phosphorus ,10 ppm,"30 ppm	","Purplish leaves, poor roots and flowering	","Zn and Fe lock-up, algae growth	","DAP, bone meal, rock phosphate	","Balance with Zn/Fe, reduce P application"
+Potassium ,80,150,"Leaf scorch, poor stem strength	","Mg and Ca deficiency, salt stress	","Muriate/sulfate of potash	","Leaching, rotate crops"
+Sulfur ,10,30,"Yellowing of young leaves, reduced protein	","Soil acidification	","Ammonium sulfate, gypsum	","Lime application, test water"
+Calcium ,1000,2000,"Blossom-end rot, leaf distortion	","Poor Mg/K uptake, soil compaction	","Lime, gypsum, calcium nitrate	","Reduce liming, use sulfur"
+Magnesium ,50,120,"Interveinal chlorosis (older leaves)	","Ca/K imbalance	","Dolomitic lime, Epsom salts	","Apply calcium, increase OM"
+Zinc ,0.5,5,"Yellow bands, stunted growth	","Root suppression, bronzing	","Zinc sulfate, foliar sprays	","Increase pH, organic matter"
+Iron ,2.5,10,"Chlorosis of young leaves	","Rust spots, leaf necrosis	","Fe-EDTA, acidify soil	","Raise pH, add lime"
+Manganese ,2,10,"Pale color, yellowing between veins	","Dark spots, crinkled leaves	","MnSO? foliar spray	","Lime soil, increase pH"
+Copper ,0.2,2,"Twisted young leaves, poor flowering	","Leaf discoloration, root damage	","CuSO?, compost	","Raise pH, organic matter"
+Boron ,0.5,2,"Brittle/curled leaves, fruit deformities	","Leaf burn, fruit cracking	","Borax (low dose)	","Leach soil, limit application"
+Molybdenum ,0.05,5,"N deficiency-like symptoms in legumes	","Cu deficiency	","Sodium molybdate, raise pH	",Slightly lower pH
+Chloride ,10,100,"Wilting, leaf tip necrosis	","Salt toxicity, leaf scorch	","KCl, CaCl? in moderation	","Improve drainage, leaching"
+Nickel ,0.05,0.2,"Tip necrosis, urease enzyme inactivity	","Chlorosis, poor microbes	","Nickel sulfate	",Avoid industrial inputs
+Cobalt ,0.02,0.1,"Poor nodulation in legumes	","Fe/Mn imbalance	","Cobalt chloride	","Compost, leach with good water"
+"Soil pH	",6,7.5,"Acidic: nutrient lock-up, poor microbes	","Alkaline: micronutrient unavailability	","Lime to raise pH	","Elemental sulfur, FeSO? to lower pH"
+"Buffer pH	",6.4,7.2,"Soil susceptible to acidification	","Over-limed or alkaline trend	","Compost, proper liming	","Avoid over-liming, use acid-forming fertilizers"
+"EC (Electrical Conductivity)	",0,1.5,"Nutrient deficiency, poor availability	","Salinity stress, stunted growth	","Balanced fertilization, compost	","Leach salts, gypsum, improve drainage"
+"CEC (Cation Exchange Capacity)	",10,40,"Low fertility, poor nutrient holding	","Tight nutrient binding (rare)	","Compost, clay, biochar	","Improve drainage, balanced nutrients"
+"Base Saturation (%)	",60,80,"Low Ca/Mg/K availability	","High pH, micronutrient deficiency	","Apply Ca/Mg/K fertilizers	","Apply sulfur, reduce lime"
+"ESP (Exchangeable Sodium %)	",0,15,,"Sodic soil: dispersion, poor structure	",,"Gypsum, flush with clean water"
+"SAR (Sodium Adsorption Ratio)	",0,13,,"Sodium toxicity, poor infiltration	",,"Improve irrigation quality, gypsum"
+"Organic_Carbon_Content (OC)	",0.5,1.5,"Poor structure, low microbial activity	","Rare; excessive organic inputs may delay N mineralization	","Add compost, manure, cover crops	",Avoid over-application of raw organic matter
+"Total_Organic_Matter (%)	",2,6,"Poor nutrient/water retention	","Can increase disease/pest pressure	","Incorporate residues, compost	","Use composted materials, manage pest cycles"
+"Microbial_Biomass_Carbon (MBC)	",200,600,"Weak microbial community, poor nutrient cycling	","Not common, but may cause nutrient immobilization	","Add compost, rotate crops	","Improve C:N ratio, avoid high C materials"
+"Soil_Respiration Rate	",1,5,"Low microbial activity	","Excess respiration indicates decomposition stress	","Add fresh organic matter	","Reduce fresh input, improve aeration"
+"Enzyme_Activities	",,,"Nutrient cycling slowdown	","Rare, but indicates imbalance	","Add residues, legumes, compost	",Normalize organic input levels
+Earthworm_Count,10,,"Soil compaction, low fertility	","Rare; high counts = good health	","Reduce tillage, add mulch	",No action needed
+Soil_Texture_Sand,"40	","40	","Poor structure, fast drainage	","Poor drainage (in clay), compaction	","Add organic matter, gypsum for clay	",Add sand/organic matter to improve structure
+Soil_Texture_Silt,40,40,"Poor structure, fast drainage	","Poor drainage (in clay), compaction	","Add organic matter, gypsum for clay	",Add sand/organic matter to improve structure
+Soil_Texture_clay,20,20,"Poor structure, fast drainage	","Poor drainage (in clay), compaction	","Add organic matter, gypsum for clay	",Add sand/organic matter to improve structure
+Soil_Structure,"Stable aggregates, crumb-like	",,"Compacted, poor root growth	","Over-aerated, unstable structure	","Use cover crops, reduce compaction	",Incorporate stabilizing OM
+Bulk_Density,,1.4,"Loose soils, poor seedbed	","Root restriction, compaction	","Incorporate OM to bind particles	","Use subsoiling, add compost"
+"Porosity	",40,60,"Poor water retention, low microbial activity	","Waterlogging, poor aeration	","Add organic matter	",Use drainage systems
+Moisture_Content,20,30,"Wilting, slow growth	","Root rot, anaerobic conditions	","Irrigate timely	",Improve drainage
+Water_Holding_Capacity,25,50,"Drought stress	",Waterlogging,"Add OM, improve texture	","Raise beds, plant spacing"
+"Infiltration_Rate	",1,5,"Surface runoff, erosion	","Nutrient leaching	","Balanced loam: sand-silt-clay = 40-40-20+A30:K47	",Improve clay content or mulch cover
+"Compaction_Index	",0,85,"Weak root anchorage	","Root restriction, anaerobic zones	","Deep tillage, subsoiling	",Use lighter equipment
+Aggregate_Stability,60,,"Crusting, poor aeration	","Erosion-prone	","Add compost, no-till	",Improve OM management
+"Total Dissolved Solids (TDS)	",500,1500,"Nutrient deficiency	","Salinity stress, stunted plants	","Balanced nutrient additions	","Leaching, salt-tolerant plants"
+"pH of Saturated Paste	",6.5,8.5,"Microbial inactivity	","Nutrient lockout (Fe, Zn, Mn)	","Compost, sulfur, gypsum	","Organic matter, avoid over-liming"
+"Gypsum Requirement	",2,10,,"Ca:Mg imbalance	","Apply gypsum as per ESP & SAR	","Test first, avoid excess use"
+"Calcium Carbonate Content	",2,10,"Poor pH buffering	","Iron chlorosis, nutrient lock	","Use Fe chelates, acidifiers	",Use OM to buffer excess pH
+Pb,,50,,"Toxicity, poor germination, bioaccumulation	",,"Phytoremediation, biochar, soil washing"
+Cd,,3,,"Toxicity, poor germination, bioaccumulation	",,"Phytoremediation, biochar, soil washing"
+"Hydrocarbon Contamination	",,1000,,"Germination failure, anaerobic soil	",,"Bioremediation (e.g., Pseudomonas), aeration"
+Cr,"Pb <50, Cd <3, Hg <0.1, As <10, Cr <100 mg/kg	",100,,"Toxicity, poor germination, bioaccumulation	",,"Phytoremediation, biochar, soil washing"
+Hg,,0.1,,"Toxicity, poor germination, bioaccumulation	",,"Phytoremediation, biochar, soil washing"
+As,,10,,"Toxicity, poor germination, bioaccumulation	",,"Phytoremediation, biochar, soil washing"
