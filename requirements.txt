@@ -1,6 +1,10 @@
-Flask==2.3.2
-scikit-learn==1.4.0
-pandas==2.2.0
-matplotlib==3.7.1
-seaborn==0.12.2
-...
+Flask==2.3.3
+gunicorn==21.2.0                  # For production deployment
+requests==2.31.0                  # For calling weather APIs
+pandas==2.2.1                     # For data handling
+numpy==1.26.4                     # For ML calculations
+scikit-learn==1.4.1.post1         # For Random Forest, LabelEncoder, etc.
+matplotlib==3.8.3                 # For detailed plots (e.g., water requirement)
+seaborn==0.13.2                   # For better visuals (optional)
+chart-studio==1.1.0               # For interactive graphs if needed
+python-dotenv==1.0.1              # For managing env variables locally
