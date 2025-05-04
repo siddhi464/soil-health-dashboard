@@ -5,7 +5,10 @@ A smart Soil Health &amp; Microbial Biodiversity Dashboard that empowers farmers
 **Empowering sustainable farming with smart, data-driven soil insights.**
 
 ---
+## Demonstration Video Link :
+https://www.youtube.com/watch?v=OwBEicS_58Q
 
+---
 ## 📌 Problem Statement  
 Soil degradation and declining microbial biodiversity are silently undermining global agriculture—particularly in regions like India—by reducing crop yields, exhausting soil vitality, and threatening long-term food security. Most farmers lack access to tools that assess soil health, analyze microbial life, or offer actionable guidance for smarter farming.
 
